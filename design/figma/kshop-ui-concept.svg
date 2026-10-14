@@ -26,16 +26,16 @@
   </defs>
 
   <rect width="2920" height="2960" fill="#f0eee8"/>
-  <text x="40" y="25" class="sans tiny" fill="#738270">MỘC MARKET · UX/UI CONCEPT · STEP 07</text>
+  <text x="40" y="25" class="sans tiny" fill="#738270">KSHOP · UX/UI CONCEPT · STEP 07</text>
 
   <g id="01-storefront" transform="translate(40 48)">
     <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
     <rect width="1400" height="72" fill="#fff"/>
     <path d="M0 71.5H1400" class="line"/>
     <circle cx="74" cy="36" r="18" fill="#264d3b"/>
-    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
-    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
-    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">K</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">KShop</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">SHOP CỦA KHOA</text>
     <text x="485" y="42" class="sans label green">Cửa hàng</text>
     <text x="595" y="42" class="sans label muted">Đơn hàng</text>
     <text x="1106" y="42" class="sans label muted">Đăng nhập</text>
@@ -122,7 +122,7 @@
     <g transform="translate(54 151)">
       <rect width="620" height="700" rx="5" fill="#fff" stroke="#e8e7df"/>
       <circle cx="310" cy="83" r="23" fill="#264d3b"/>
-      <text x="303" y="91" class="serif" font-size="27" fill="#f8f6ed">M</text>
+      <text x="303" y="91" class="serif" font-size="27" fill="#f8f6ed">K</text>
       <text x="310" y="139" class="sans tiny muted" text-anchor="middle">RẤT VUI ĐƯỢC GẶP LẠI</text>
       <text x="310" y="183" class="serif" font-size="36" text-anchor="middle">Đăng nhập</text>
       <text x="310" y="212" class="sans body muted" text-anchor="middle">Đăng nhập để tiếp tục mua sắm cùng Mộc.</text>
@@ -143,7 +143,7 @@
     <g transform="translate(726 151)">
       <rect width="620" height="700" rx="5" fill="#fff" stroke="#e8e7df"/>
       <circle cx="310" cy="67" r="23" fill="#264d3b"/>
-      <text x="303" y="75" class="serif" font-size="27" fill="#f8f6ed">M</text>
+      <text x="303" y="75" class="serif" font-size="27" fill="#f8f6ed">K</text>
       <text x="310" y="119" class="sans tiny muted" text-anchor="middle">THAM GIA CÙNG CHÚNG TÔI</text>
       <text x="310" y="161" class="serif" font-size="34" text-anchor="middle">Tạo tài khoản</text>
       <text x="310" y="188" class="sans body muted" text-anchor="middle">Lưu lại lựa chọn và theo dõi đơn hàng dễ dàng.</text>
@@ -170,9 +170,9 @@
     <rect width="1400" height="72" fill="#fff"/>
     <path d="M0 71.5H1400" class="line"/>
     <circle cx="74" cy="36" r="18" fill="#264d3b"/>
-    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
-    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
-    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">K</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">KShop</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">SHOP CỦA KHOA</text>
     <text x="1110" y="42" class="sans body muted">01 Giỏ hàng</text>
     <text x="1227" y="42" class="sans label green">02 Thanh toán</text>
     <text x="66" y="133" class="sans tiny" fill="#738270">THANH TOÁN AN TOÀN</text>
@@ -238,9 +238,9 @@
     <rect width="1400" height="72" fill="#fff"/>
     <path d="M0 71.5H1400" class="line"/>
     <circle cx="74" cy="36" r="18" fill="#264d3b"/>
-    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
-    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
-    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">K</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">KShop</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">SHOP CỦA KHOA</text>
     <text x="485" y="42" class="sans label muted">Cửa hàng</text>
     <text x="595" y="42" class="sans label green">Đơn hàng</text>
     <text x="1106" y="42" class="sans label muted">Xin chào, Minh Anh</text>
@@ -293,9 +293,9 @@
     <rect width="250" height="900" fill="#f4f5f0"/>
     <path d="M249.5 0V900" class="line"/>
     <circle cx="42" cy="43" r="17" fill="#264d3b"/>
-    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">M</text>
-    <text x="70" y="40" class="sans" font-size="16" font-weight="700">Mộc Market</text>
-    <text x="70" y="56" class="sans tiny muted" font-size="8">QUẢN TRỊ</text>
+    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">K</text>
+    <text x="70" y="40" class="sans" font-size="16" font-weight="700">KShop</text>
+    <text x="70" y="56" class="sans tiny muted" font-size="8">SHOP CỦA KHOA</text>
     <text x="26" y="113" class="sans tiny muted" font-size="9">MENU</text>
     <rect x="17" y="128" width="216" height="43" rx="4" fill="#e8eee6"/>
     <text x="41" y="155" class="sans label green">▦  Sản phẩm</text>
@@ -303,11 +303,11 @@
     <text x="41" y="247" class="sans label muted">▤  Đơn hàng</text>
     <rect x="24" y="825" width="202" height="49" rx="4" fill="#fff" stroke="#e8e7df"/>
     <circle cx="49" cy="849" r="13" fill="#e9eee7"/>
-    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">M</text>
+    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">K</text>
     <text x="71" y="847" class="sans label">Minh Anh</text>
     <text x="71" y="863" class="sans" font-size="10" fill="#7d8780">Quản trị viên</text>
 
-    <text x="289" y="49" class="sans tiny" fill="#738270">MỘC MARKET · KHU VỰC QUẢN TRỊ</text>
+    <text x="289" y="49" class="sans tiny" fill="#738270">KSHOP · KHU VỰC QUẢN TRỊ</text>
     <text x="289" y="91" class="serif" font-size="34">Quản lý cửa hàng</text>
     <text x="289" y="118" class="sans body muted">Theo dõi hoạt động và quản lý danh mục sản phẩm.</text>
     <rect x="1171" y="47" width="188" height="40" rx="3" fill="#fff" stroke="#dfe4db"/>
@@ -394,9 +394,9 @@
     <rect width="250" height="900" fill="#f4f5f0"/>
     <path d="M249.5 0V900" class="line"/>
     <circle cx="42" cy="43" r="17" fill="#264d3b"/>
-    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">M</text>
-    <text x="70" y="40" class="sans" font-size="16" font-weight="700">Mộc Market</text>
-    <text x="70" y="56" class="sans tiny muted" font-size="8">QUẢN TRỊ</text>
+    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">K</text>
+    <text x="70" y="40" class="sans" font-size="16" font-weight="700">KShop</text>
+    <text x="70" y="56" class="sans tiny muted" font-size="8">SHOP CỦA KHOA</text>
     <text x="26" y="113" class="sans tiny muted" font-size="9">MENU</text>
     <text x="41" y="155" class="sans label muted">▦  Sản phẩm</text>
     <text x="41" y="201" class="sans label muted">◇  Danh mục</text>
@@ -404,11 +404,11 @@
     <text x="41" y="247" class="sans label green">▤  Đơn hàng</text>
     <rect x="24" y="825" width="202" height="49" rx="4" fill="#fff" stroke="#e8e7df"/>
     <circle cx="49" cy="849" r="13" fill="#e9eee7"/>
-    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">M</text>
+    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">K</text>
     <text x="71" y="847" class="sans label">Minh Anh</text>
     <text x="71" y="863" class="sans" font-size="10" fill="#7d8780">Quản trị viên</text>
 
-    <text x="289" y="49" class="sans tiny" fill="#738270">MỘC MARKET · KHU VỰC QUẢN TRỊ</text>
+    <text x="289" y="49" class="sans tiny" fill="#738270">KSHOP · KHU VỰC QUẢN TRỊ</text>
     <text x="289" y="91" class="serif" font-size="34">Quản lý đơn hàng</text>
     <text x="289" y="118" class="sans body muted">Xác nhận đơn mới và cập nhật tiến độ giao hàng.</text>
     <rect x="1171" y="47" width="188" height="40" rx="3" fill="#fff" stroke="#dfe4db"/>

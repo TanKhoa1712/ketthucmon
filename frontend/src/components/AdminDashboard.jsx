@@ -164,7 +164,7 @@ function AdminDashboard({ token, onFeedback }) {
     <section className="admin-page">
       <div className="admin-heading">
         <div>
-          <p className="eyebrow">MỘC MARKET · KHU VỰC QUẢN TRỊ</p>
+          <p className="eyebrow">KSHOP · KHU VỰC QUẢN TRỊ</p>
           <h1>Quản lý cửa hàng</h1>
           <p className="admin-subtitle">Quản lý sản phẩm, danh mục và đơn hàng tại một nơi.</p>
         </div>
@@ -215,7 +215,7 @@ function AdminDashboard({ token, onFeedback }) {
                   <thead><tr><th>SẢN PHẨM</th><th>DANH MỤC</th><th>GIÁ BÁN</th><th>TỒN KHO</th><th>THAO TÁC</th></tr></thead>
                   <tbody>{products.map((product) => (
                     <tr key={product.id}>
-                      <td><div className="admin-product-cell">{product.image ? <img src={product.image} alt="" /> : <span className="admin-image-placeholder">M</span>}<span><strong>{product.name}</strong><small>{product.slug}</small></span></div></td>
+                      <td><div className="admin-product-cell">{product.image ? <img src={product.image} alt="" /> : <span className="admin-image-placeholder">K</span>}<span><strong>{product.name}</strong><small>{product.slug}</small></span></div></td>
                       <td>{product.category?.name || "—"}</td>
                       <td className="admin-price">{money.format(Number(product.price))}</td>
                       <td><span className={product.stock < 5 ? "inventory low" : "inventory"}>{product.stock} chiếc</span></td>

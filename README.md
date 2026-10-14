@@ -14,6 +14,7 @@ Dự án website bán hàng theo kiến trúc Frontend – Backend tách biệt,
 
 ## Chức năng
 
+- Tên cửa hàng demo: **KShop** — chữ K đại diện cho Khoa.
 - Đăng ký/đăng nhập JWT; mật khẩu được hash bằng bcrypt.
 - Danh sách sản phẩm, tìm kiếm theo tên, lọc danh mục và xem tồn kho.
 - Giỏ hàng, đặt hàng COD và lịch sử đơn hàng.

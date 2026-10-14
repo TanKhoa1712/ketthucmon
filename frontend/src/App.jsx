@@ -240,8 +240,8 @@ function App() {
     <div className="store">
       <header className="topbar">
         <a className="brand" href="#" onClick={() => setActiveView("shop")}>
-          <span className="brand-mark">M</span>
-          <span>Mộc Market<small>CHỌN ĐIỀU BẠN YÊU</small></span>
+          <span className="brand-mark">K</span>
+          <span>KShop<small>SHOP CỦA KHOA</small></span>
         </a>
         <nav className="main-nav" aria-label="Điều hướng chính">
           <button className={activeView === "shop" ? "nav-link active" : "nav-link"} onClick={() => setActiveView("shop")}>Cửa hàng</button>
@@ -307,7 +307,7 @@ function App() {
                   {products.map((product, index) => (
                     <article className="product-card" key={product.id}>
                       <div className={`product-image image-tone-${index % 4}`}>
-                        {product.image ? <img src={product.image} alt={product.name} loading="lazy" /> : <span className="image-placeholder">M.</span>}
+                        {product.image ? <img src={product.image} alt={product.name} loading="lazy" /> : <span className="image-placeholder">K.</span>}
                         {product.stock > 0 && product.stock < 5 && <span className="stock-badge">Sắp hết</span>}
                         <button className="quick-add" onClick={() => addToCart(product)} disabled={product.stock < 1} aria-label={`Thêm ${product.name} vào giỏ`}>+</button>
                       </div>
@@ -376,7 +376,7 @@ function App() {
         )}
       </main>
 
-      <footer className="footer"><a className="brand footer-brand" href="#" onClick={() => setActiveView("shop")}><span className="brand-mark">M</span><span>Mộc Market<small>CHỌN ĐIỀU BẠN YÊU</small></span></a><p>Mua sắm có chọn lọc, sống vui mỗi ngày.</p><span>© 2026 Mộc Market</span></footer>
+      <footer className="footer"><a className="brand footer-brand" href="#" onClick={() => setActiveView("shop")}><span className="brand-mark">K</span><span>KShop<small>SHOP CỦA KHOA</small></span></a><p>Mua sắm có chọn lọc, sống vui mỗi ngày.</p><span>© 2026 KShop</span></footer>
 
       {(error || notice) && (
         <div className={error ? "toast toast-error" : "toast"} role={error ? "alert" : "status"}>
@@ -389,7 +389,7 @@ function App() {
         <div className="modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setAuthOpen(false); }}>
           <form className="auth-modal" onSubmit={submitAuth}>
             <button type="button" className="close-button" onClick={() => setAuthOpen(false)} aria-label="Đóng">×</button>
-            <span className="brand-mark modal-mark">M</span>
+            <span className="brand-mark modal-mark">K</span>
             <p className="eyebrow">{authMode === "register" ? "THAM GIA CÙNG CHÚNG TÔI" : "RẤT VUI ĐƯỢC GẶP LẠI"}</p>
             <h2>{authMode === "register" ? "Tạo tài khoản" : "Đăng nhập"}</h2>
             {authMode === "register" && <label>Họ và tên<input name="name" required minLength="2" maxLength="80" autoComplete="name" /></label>}
