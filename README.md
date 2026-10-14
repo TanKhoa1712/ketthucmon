@@ -56,7 +56,10 @@ npm run dev
 
 ```bash
 docker compose up --build -d
+docker compose ps
 ```
+
+Compose waits for PostgreSQL to become healthy before starting the backend, then waits for the backend health check before starting the frontend. If a service does not start, inspect its logs with `docker compose logs backend`.
 
 ## API
 

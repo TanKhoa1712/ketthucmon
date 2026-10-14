@@ -28,27 +28,36 @@ services:
         condition: service_healthy
     environment:
       PORT: 5000
-      CLIENT_URL: http://localhost:5173
+      CLIENT_URL: http://localhost:3000,http://localhost:5173
       DATABASE_URL: postgresql://webbanhang:webbanhang_dev_2026@postgres:5432/webbanhang?schema=public
       JWT_SECRET: change_this_secret_in_production
     ports:
       - "5000:5000"
-    volumes:
-      - ./backend:/app
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:5000/api/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
 
   frontend:
     build:
       context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:5000
     container_name: web-ban-hang-frontend
     restart: unless-stopped
     depends_on:
-      - backend
-    environment:
-      VITE_API_URL: http://localhost:5000
+      backend:
+        condition: service_healthy
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
 
 volumes:
   du_lieu_postgres:

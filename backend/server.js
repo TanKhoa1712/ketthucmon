@@ -9,6 +9,9 @@ require("dotenv").config();
 
 const app = express();
 const prisma = new PrismaClient();
+const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000,http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim());
 
 const swaggerSpec = swaggerJsdoc({
   definition: {
@@ -33,13 +36,25 @@ const swaggerSpec = swaggerJsdoc({
 });
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 const { authRoutes, productRoutes } = require("./src/routes");
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    name: "Web Bán Hàng API",
+    version: "1.0.0",
+    endpoints: {
+      health: "/api/health",
+      products: "/api/products",
+      docs: "/api-docs"
+    }
+  });
+});
 
 app.get("/api/health", async (req, res) => {
   try {
