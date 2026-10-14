@@ -1,0 +1,487 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2920" height="2960" viewBox="0 0 2920 2960" fill="none">
+  <defs>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#DDE6D9"/>
+      <stop offset="1" stop-color="#EFF0E8"/>
+    </linearGradient>
+    <linearGradient id="bag" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C9A889"/>
+      <stop offset="1" stop-color="#9C785C"/>
+    </linearGradient>
+    <linearGradient id="shoe" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#D5DBD7"/>
+      <stop offset="1" stop-color="#A8B7AE"/>
+    </linearGradient>
+    <style>
+      .sans{font-family:"DM Sans",Arial,sans-serif;fill:#25352e}
+      .serif{font-family:"Playfair Display",Georgia,serif;fill:#25352e}
+      .muted{fill:#7d8780}
+      .green{fill:#264d3b}
+      .tiny{font-size:11px;letter-spacing:1.5px;font-weight:700}
+      .label{font-size:13px;font-weight:600}
+      .body{font-size:14px}
+      .title{font-size:34px}
+      .line{stroke:#e8e7df}
+    </style>
+  </defs>
+
+  <rect width="2920" height="2960" fill="#f0eee8"/>
+  <text x="40" y="25" class="sans tiny" fill="#738270">MỘC MARKET · UX/UI CONCEPT · STEP 07</text>
+
+  <g id="01-storefront" transform="translate(40 48)">
+    <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
+    <rect width="1400" height="72" fill="#fff"/>
+    <path d="M0 71.5H1400" class="line"/>
+    <circle cx="74" cy="36" r="18" fill="#264d3b"/>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="485" y="42" class="sans label green">Cửa hàng</text>
+    <text x="595" y="42" class="sans label muted">Đơn hàng</text>
+    <text x="1106" y="42" class="sans label muted">Đăng nhập</text>
+    <rect x="1210" y="19" width="144" height="36" rx="3" fill="#fff" stroke="#dfe4db"/>
+    <text x="1230" y="42" class="sans label">Giỏ hàng</text>
+    <circle cx="1328" cy="37" r="11" fill="#264d3b"/>
+    <text x="1325" y="41" class="sans" font-size="10" font-weight="700" fill="#fff">2</text>
+
+    <rect x="48" y="100" width="1304" height="308" rx="4" fill="url(#hero)"/>
+    <text x="96" y="153" class="sans tiny" fill="#738270">BỘ SƯU TẬP MỚI · 2026</text>
+    <text x="96" y="224" class="serif" font-size="51">Những món đồ</text>
+    <text x="96" y="280" class="serif" font-size="51">cho ngày <tspan fill="#648066" font-style="italic">thật đẹp.</tspan></text>
+    <text x="98" y="319" class="sans body muted">Tuyển chọn tinh tế, đồng hành cùng bạn mỗi ngày.</text>
+    <rect x="96" y="345" width="172" height="42" rx="3" fill="#264d3b"/>
+    <text x="117" y="371" class="sans label" fill="#fff">Khám phá ngay</text>
+    <text x="244" y="371" class="sans" font-size="17" fill="#fff">↗</text>
+    <rect x="790" y="100" width="562" height="308" fill="#d7d9cf"/>
+    <circle cx="1067" cy="232" r="130" fill="#e9e2d6"/>
+    <path d="M889 310C946 267 997 253 1066 270C1126 284 1180 255 1240 216V408H790V340C827 333 860 324 889 310Z" fill="#becabd"/>
+    <path d="M1021 148C1021 118 1045 96 1074 96C1103 96 1127 118 1127 148V173H1110V148C1110 127 1094 112 1074 112C1054 112 1038 127 1038 148V173H1021V148Z" fill="#8b735d"/>
+    <rect x="1028" y="163" width="93" height="120" rx="20" fill="url(#bag)"/>
+    <path d="M1028 202H1121M1074 163V283" stroke="#e3d4c2" stroke-width="2" opacity=".7"/>
+    <rect x="1148" y="286" width="154" height="74" rx="4" fill="#fff" fill-opacity=".86"/>
+    <text x="1164" y="309" class="sans tiny muted" font-size="8">CURATED FOR YOU</text>
+    <text x="1164" y="334" class="serif" font-size="17">Simple things,</text>
+    <text x="1164" y="352" class="serif" font-size="17">better days.</text>
+
+    <text x="66" y="455" class="sans tiny" fill="#738270">CỬA HÀNG CỦA CHÚNG TÔI</text>
+    <text x="66" y="491" class="serif" font-size="30">Được yêu thích</text>
+    <text x="1265" y="487" class="sans body muted">04 sản phẩm</text>
+    <rect x="66" y="514" width="865" height="42" rx="2" fill="#fff" stroke="#e8e7df"/>
+    <text x="84" y="541" class="sans muted" font-size="20">⌕</text>
+    <text x="117" y="540" class="sans body muted">Tìm sản phẩm...</text>
+    <rect x="945" y="514" width="240" height="42" rx="2" fill="#fff" stroke="#e8e7df"/>
+    <text x="963" y="540" class="sans body">Tất cả danh mục</text>
+    <path d="m1159 531 6 6 6-6" stroke="#7d8780" stroke-width="1.5"/>
+    <rect x="1199" y="514" width="153" height="42" rx="3" fill="#264d3b"/>
+    <text x="1239" y="540" class="sans label" fill="#fff">Tìm kiếm</text>
+
+    <g transform="translate(66 578)">
+      <rect width="300" height="185" rx="3" fill="#eee8de"/>
+      <path d="M99 67C99 44 117 26 140 26S181 44 181 67" stroke="#947c63" stroke-width="10" fill="none"/>
+      <rect x="91" y="62" width="98" height="88" rx="16" fill="url(#bag)"/>
+      <path d="M91 91H189M140 62V150" stroke="#e8d9c7" stroke-width="2"/>
+      <text x="0" y="211" class="sans tiny muted" font-size="9">PHỤ KIỆN · CÒN 19</text>
+      <text x="0" y="237" class="serif" font-size="19">Túi đeo chéo</text>
+      <text x="0" y="265" class="sans label green">420.000 ₫</text>
+      <text x="166" y="265" class="sans label muted">Thêm vào giỏ</text>
+    </g>
+    <g transform="translate(391 578)">
+      <rect width="300" height="185" rx="3" fill="#e7ece9"/>
+      <path d="M65 121C89 121 98 95 118 81L148 98C162 108 188 108 205 125L220 140C229 150 219 158 206 158H72C55 158 51 140 65 121Z" fill="url(#shoe)"/>
+      <path d="m111 99 20 9m-31 4 19 9m-31 4 16 7" stroke="#f8f8f3" stroke-width="4"/>
+      <text x="0" y="211" class="sans tiny muted" font-size="9">GIÀY DÉP · CÒN 17</text>
+      <text x="0" y="237" class="serif" font-size="19">Giày sneaker</text>
+      <text x="0" y="265" class="sans label green">850.000 ₫</text>
+      <text x="166" y="265" class="sans label muted">Thêm vào giỏ</text>
+    </g>
+    <g transform="translate(716 578)">
+      <rect width="300" height="185" rx="3" fill="#eae9e4"/>
+      <path d="m111 55 38-18 40 18 26 99H86l25-99Z" fill="#63786b"/>
+      <path d="m111 55 38 34 40-34M149 89v65" stroke="#e2e5dd" stroke-width="2" fill="none"/>
+      <text x="0" y="211" class="sans tiny muted" font-size="9">THỜI TRANG · CÒN 11</text>
+      <text x="0" y="237" class="serif" font-size="19">Áo khoác denim</text>
+      <text x="0" y="265" class="sans label green">690.000 ₫</text>
+      <text x="166" y="265" class="sans label muted">Thêm vào giỏ</text>
+    </g>
+    <g transform="translate(1041 578)">
+      <rect width="293" height="185" rx="3" fill="#eee9e3"/>
+      <path d="m109 56 39-17 40 17 19 95h-116l18-95Z" fill="#c9b7a7"/>
+      <path d="m109 56 39 32 40-32m-40 32v63" stroke="#efe8e0" stroke-width="2" fill="none"/>
+      <text x="0" y="211" class="sans tiny muted" font-size="9">THỜI TRANG · CÒN 09</text>
+      <text x="0" y="237" class="serif" font-size="19">Áo thun basic</text>
+      <text x="0" y="265" class="sans label green">250.000 ₫</text>
+      <text x="161" y="265" class="sans label muted">Thêm vào giỏ</text>
+    </g>
+  </g>
+
+  <g id="02-account-states" transform="translate(1480 48)">
+    <rect width="1400" height="900" rx="8" fill="#f5f4ef"/>
+    <text x="54" y="49" class="sans tiny" fill="#738270">TÀI KHOẢN · ĐĂNG NHẬP &amp; ĐĂNG KÝ</text>
+    <text x="54" y="91" class="serif" font-size="30">Bắt đầu hành trình mua sắm</text>
+    <text x="54" y="119" class="sans body muted">Hai trạng thái trong cùng một luồng xác thực, gọn gàng và thân thiện.</text>
+    <g transform="translate(54 151)">
+      <rect width="620" height="700" rx="5" fill="#fff" stroke="#e8e7df"/>
+      <circle cx="310" cy="83" r="23" fill="#264d3b"/>
+      <text x="303" y="91" class="serif" font-size="27" fill="#f8f6ed">M</text>
+      <text x="310" y="139" class="sans tiny muted" text-anchor="middle">RẤT VUI ĐƯỢC GẶP LẠI</text>
+      <text x="310" y="183" class="serif" font-size="36" text-anchor="middle">Đăng nhập</text>
+      <text x="310" y="212" class="sans body muted" text-anchor="middle">Đăng nhập để tiếp tục mua sắm cùng Mộc.</text>
+      <text x="70" y="274" class="sans label">Email</text>
+      <rect x="70" y="289" width="480" height="52" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="88" y="321" class="sans body muted">tenban@email.com</text>
+      <text x="70" y="379" class="sans label">Mật khẩu</text>
+      <rect x="70" y="394" width="480" height="52" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="88" y="426" class="sans body muted">••••••••</text>
+      <text x="70" y="482" class="sans" font-size="12" fill="#718174">Mật khẩu tối thiểu 8 ký tự</text>
+      <rect x="70" y="514" width="480" height="52" rx="3" fill="#264d3b"/>
+      <text x="310" y="547" class="sans label" fill="#fff" text-anchor="middle">Đăng nhập</text>
+      <text x="225" y="612" class="sans body muted">Chưa có tài khoản?</text>
+      <text x="376" y="612" class="sans label green">Đăng ký ngay</text>
+      <path d="M70 649H550" class="line"/>
+      <text x="310" y="679" class="sans" font-size="11" fill="#8b938b" text-anchor="middle">Mua sắm có chọn lọc, sống vui mỗi ngày.</text>
+    </g>
+    <g transform="translate(726 151)">
+      <rect width="620" height="700" rx="5" fill="#fff" stroke="#e8e7df"/>
+      <circle cx="310" cy="67" r="23" fill="#264d3b"/>
+      <text x="303" y="75" class="serif" font-size="27" fill="#f8f6ed">M</text>
+      <text x="310" y="119" class="sans tiny muted" text-anchor="middle">THAM GIA CÙNG CHÚNG TÔI</text>
+      <text x="310" y="161" class="serif" font-size="34" text-anchor="middle">Tạo tài khoản</text>
+      <text x="310" y="188" class="sans body muted" text-anchor="middle">Lưu lại lựa chọn và theo dõi đơn hàng dễ dàng.</text>
+      <text x="70" y="235" class="sans label">Họ và tên</text>
+      <rect x="70" y="249" width="480" height="46" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="88" y="278" class="sans body muted">Nguyễn Minh Anh</text>
+      <text x="70" y="327" class="sans label">Email</text>
+      <rect x="70" y="341" width="480" height="46" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="88" y="370" class="sans body muted">tenban@email.com</text>
+      <text x="70" y="419" class="sans label">Mật khẩu</text>
+      <rect x="70" y="433" width="480" height="46" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="88" y="462" class="sans body muted">••••••••</text>
+      <text x="70" y="509" class="sans" font-size="12" fill="#718174">Dùng ít nhất 8 ký tự để bảo vệ tài khoản.</text>
+      <rect x="70" y="536" width="480" height="49" rx="3" fill="#264d3b"/>
+      <text x="310" y="567" class="sans label" fill="#fff" text-anchor="middle">Tạo tài khoản</text>
+      <text x="219" y="626" class="sans body muted">Đã có tài khoản?</text>
+      <text x="354" y="626" class="sans label green">Đăng nhập</text>
+      <text x="310" y="678" class="sans" font-size="11" fill="#8b938b" text-anchor="middle">Bằng việc tiếp tục, bạn đồng ý với điều khoản sử dụng.</text>
+    </g>
+  </g>
+
+  <g id="03-checkout" transform="translate(40 1010)">
+    <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
+    <rect width="1400" height="72" fill="#fff"/>
+    <path d="M0 71.5H1400" class="line"/>
+    <circle cx="74" cy="36" r="18" fill="#264d3b"/>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="1110" y="42" class="sans body muted">01 Giỏ hàng</text>
+    <text x="1227" y="42" class="sans label green">02 Thanh toán</text>
+    <text x="66" y="133" class="sans tiny" fill="#738270">THANH TOÁN AN TOÀN</text>
+    <text x="66" y="177" class="serif title">Thông tin nhận hàng</text>
+    <text x="66" y="205" class="sans body muted">Nhập thông tin giao hàng và chọn phương thức thanh toán.</text>
+    <g transform="translate(66 240)">
+      <rect width="790" height="584" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="32" y="43" class="serif" font-size="23">Địa chỉ giao hàng</text>
+      <text x="32" y="82" class="sans label">Họ và tên</text>
+      <rect x="32" y="95" width="726" height="48" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="50" y="125" class="sans body">Nguyễn Minh Anh</text>
+      <text x="32" y="178" class="sans label">Số điện thoại</text>
+      <rect x="32" y="191" width="726" height="48" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="50" y="221" class="sans body">090 123 4567</text>
+      <text x="32" y="274" class="sans label">Địa chỉ nhận hàng</text>
+      <rect x="32" y="287" width="726" height="77" rx="3" fill="#fff" stroke="#dfe3dc"/>
+      <text x="50" y="316" class="sans body">12 Nguyễn Huệ, phường Bến Nghé</text>
+      <text x="50" y="340" class="sans body muted">Quận 1, TP. Hồ Chí Minh</text>
+      <text x="32" y="412" class="serif" font-size="23">Phương thức thanh toán</text>
+      <rect x="32" y="431" width="726" height="54" rx="3" fill="#f7f9f5" stroke="#264d3b" stroke-width="1.5"/>
+      <circle cx="55" cy="458" r="8" fill="#fff" stroke="#264d3b" stroke-width="2"/>
+      <circle cx="55" cy="458" r="4" fill="#264d3b"/>
+      <text x="77" y="454" class="sans label">Thanh toán khi nhận hàng</text>
+      <text x="77" y="473" class="sans" font-size="11" fill="#7d8780">COD · Thanh toán trực tiếp khi nhận hàng</text>
+      <rect x="32" y="496" width="726" height="54" rx="3" fill="#fff" stroke="#e0e3dc"/>
+      <circle cx="55" cy="523" r="8" fill="#fff" stroke="#bfc7bd"/>
+      <text x="77" y="519" class="sans label">VNPay</text>
+      <text x="77" y="538" class="sans" font-size="11" fill="#7d8780">ATM · QR · Ví điện tử</text>
+      <text x="32" y="574" class="sans" font-size="11" fill="#7d8780">Thông tin của bạn được dùng để xử lý và giao đơn hàng.</text>
+    </g>
+    <g transform="translate(886 240)">
+      <rect width="448" height="584" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="26" y="43" class="serif" font-size="23">Đơn hàng của bạn</text>
+      <text x="26" y="75" class="sans body muted">2 sản phẩm</text>
+      <path d="M26 94H422" class="line"/>
+      <rect x="26" y="116" width="66" height="70" rx="3" fill="#eee8de"/>
+      <path d="M45 138c0-12 7-19 14-19s14 7 14 19" stroke="#947c63" stroke-width="4" fill="none"/>
+      <rect x="41" y="137" width="36" height="34" rx="6" fill="url(#bag)"/>
+      <text x="109" y="141" class="sans label">Túi đeo chéo</text>
+      <text x="109" y="163" class="sans" font-size="12" fill="#7d8780">Số lượng: 1</text>
+      <text x="393" y="151" class="sans label" text-anchor="end">420.000 ₫</text>
+      <rect x="26" y="202" width="66" height="70" rx="3" fill="#e7ece9"/>
+      <path d="M41 246c12 0 14-15 25-20l18 9c7 4 13 5 17 14l6 8H46c-8 0-10-5-5-11Z" fill="url(#shoe)"/>
+      <text x="109" y="226" class="sans label">Giày sneaker</text>
+      <text x="109" y="248" class="sans" font-size="12" fill="#7d8780">Số lượng: 1</text>
+      <text x="393" y="236" class="sans label" text-anchor="end">850.000 ₫</text>
+      <path d="M26 298H422" class="line"/>
+      <text x="26" y="331" class="sans body muted">Tạm tính</text>
+      <text x="393" y="331" class="sans body" text-anchor="end">1.270.000 ₫</text>
+      <text x="26" y="367" class="sans body muted">Phí giao hàng</text>
+      <text x="393" y="367" class="sans body" text-anchor="end">Miễn phí</text>
+      <path d="M26 390H422" class="line"/>
+      <text x="26" y="429" class="sans label">Tổng thanh toán</text>
+      <text x="393" y="431" class="serif green" font-size="23" text-anchor="end">1.270.000 ₫</text>
+      <rect x="26" y="470" width="396" height="54" rx="3" fill="#264d3b"/>
+      <text x="224" y="503" class="sans label" fill="#fff" text-anchor="middle">Xác nhận đặt hàng</text>
+      <text x="224" y="552" class="sans" font-size="11" fill="#7d8780" text-anchor="middle">Bạn sẽ nhận email xác nhận sau khi đặt hàng.</text>
+    </g>
+  </g>
+
+  <g id="04-order-history" transform="translate(1480 1010)">
+    <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
+    <rect width="1400" height="72" fill="#fff"/>
+    <path d="M0 71.5H1400" class="line"/>
+    <circle cx="74" cy="36" r="18" fill="#264d3b"/>
+    <text x="68" y="43" class="serif" font-size="23" fill="#f8f6ed">M</text>
+    <text x="104" y="34" class="sans" font-size="17" font-weight="700">Mộc Market</text>
+    <text x="104" y="50" class="sans tiny muted" font-size="8">CHỌN ĐIỀU BẠN YÊU</text>
+    <text x="485" y="42" class="sans label muted">Cửa hàng</text>
+    <text x="595" y="42" class="sans label green">Đơn hàng</text>
+    <text x="1106" y="42" class="sans label muted">Xin chào, Minh Anh</text>
+    <rect x="1231" y="19" width="123" height="36" rx="3" fill="#fff" stroke="#dfe4db"/>
+    <text x="1254" y="42" class="sans label">Đăng xuất</text>
+    <text x="86" y="143" class="sans tiny" fill="#738270">THEO DÕI MUA SẮM</text>
+    <text x="86" y="188" class="serif" font-size="38">Đơn hàng của bạn</text>
+    <text x="86" y="217" class="sans body muted">Xem trạng thái giao hàng và thông tin thanh toán.</text>
+    <rect x="1152" y="158" width="166" height="42" rx="3" fill="#fff" stroke="#dfe4db"/>
+    <text x="1172" y="184" class="sans label green">Tiếp tục mua sắm</text>
+    <g transform="translate(86 261)">
+      <rect width="1232" height="236" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="28" y="39" class="sans tiny green">ĐƠN HÀNG #1048</text>
+      <text x="28" y="64" class="sans body muted">14 tháng 10, 2026 · 2 sản phẩm</text>
+      <rect x="1048" y="22" width="154" height="31" rx="15" fill="#eaf2e9"/>
+      <circle cx="1066" cy="38" r="4" fill="#5b875f"/>
+      <text x="1078" y="42" class="sans" font-size="12" font-weight="600" fill="#426b48">Đang giao</text>
+      <path d="M28 83H1204" class="line"/>
+      <rect x="28" y="101" width="70" height="70" rx="3" fill="#eee8de"/>
+      <path d="M47 123c0-13 7-20 16-20s16 7 16 20" stroke="#947c63" stroke-width="4" fill="none"/>
+      <rect x="43" y="121" width="40" height="38" rx="7" fill="url(#bag)"/>
+      <text x="115" y="126" class="sans label">Túi đeo chéo</text>
+      <text x="115" y="149" class="sans body muted">Số lượng 1 · Phụ kiện</text>
+      <text x="1173" y="140" class="sans label" text-anchor="end">420.000 ₫</text>
+      <path d="M28 187H1204" class="line"/>
+      <text x="28" y="218" class="sans body muted">Thanh toán khi nhận hàng</text>
+      <text x="1173" y="220" class="serif green" font-size="21" text-anchor="end">420.000 ₫</text>
+    </g>
+    <g transform="translate(86 523)">
+      <rect width="1232" height="236" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="28" y="39" class="sans tiny green">ĐƠN HÀNG #1032</text>
+      <text x="28" y="64" class="sans body muted">09 tháng 10, 2026 · 1 sản phẩm</text>
+      <rect x="1072" y="22" width="130" height="31" rx="15" fill="#eef0ed"/>
+      <circle cx="1090" cy="38" r="4" fill="#788878"/>
+      <text x="1102" y="42" class="sans" font-size="12" font-weight="600" fill="#667368">Đã giao</text>
+      <path d="M28 83H1204" class="line"/>
+      <rect x="28" y="101" width="70" height="70" rx="3" fill="#e7ece9"/>
+      <path d="M44 150c12 0 14-15 25-20l18 9c7 4 13 5 17 14l6 8H49c-8 0-10-5-5-11Z" fill="url(#shoe)"/>
+      <text x="115" y="126" class="sans label">Giày sneaker</text>
+      <text x="115" y="149" class="sans body muted">Số lượng 1 · Giày dép</text>
+      <text x="1173" y="140" class="sans label" text-anchor="end">850.000 ₫</text>
+      <path d="M28 187H1204" class="line"/>
+      <text x="28" y="218" class="sans body muted">Đã thanh toán qua VNPay</text>
+      <text x="1173" y="220" class="serif green" font-size="21" text-anchor="end">850.000 ₫</text>
+    </g>
+  </g>
+
+  <g id="05-admin-catalog" transform="translate(40 1972)">
+    <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
+    <rect width="250" height="900" fill="#f4f5f0"/>
+    <path d="M249.5 0V900" class="line"/>
+    <circle cx="42" cy="43" r="17" fill="#264d3b"/>
+    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">M</text>
+    <text x="70" y="40" class="sans" font-size="16" font-weight="700">Mộc Market</text>
+    <text x="70" y="56" class="sans tiny muted" font-size="8">QUẢN TRỊ</text>
+    <text x="26" y="113" class="sans tiny muted" font-size="9">MENU</text>
+    <rect x="17" y="128" width="216" height="43" rx="4" fill="#e8eee6"/>
+    <text x="41" y="155" class="sans label green">▦  Sản phẩm</text>
+    <text x="41" y="201" class="sans label muted">◇  Danh mục</text>
+    <text x="41" y="247" class="sans label muted">▤  Đơn hàng</text>
+    <rect x="24" y="825" width="202" height="49" rx="4" fill="#fff" stroke="#e8e7df"/>
+    <circle cx="49" cy="849" r="13" fill="#e9eee7"/>
+    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">M</text>
+    <text x="71" y="847" class="sans label">Minh Anh</text>
+    <text x="71" y="863" class="sans" font-size="10" fill="#7d8780">Quản trị viên</text>
+
+    <text x="289" y="49" class="sans tiny" fill="#738270">MỘC MARKET · KHU VỰC QUẢN TRỊ</text>
+    <text x="289" y="91" class="serif" font-size="34">Quản lý cửa hàng</text>
+    <text x="289" y="118" class="sans body muted">Theo dõi hoạt động và quản lý danh mục sản phẩm.</text>
+    <rect x="1171" y="47" width="188" height="40" rx="3" fill="#fff" stroke="#dfe4db"/>
+    <text x="1191" y="72" class="sans label green">↻  Làm mới dữ liệu</text>
+    <g transform="translate(289 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Tổng sản phẩm</text>
+      <text x="17" y="67" class="serif green" font-size="31">24</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Đang được bày bán</text>
+    </g>
+    <g transform="translate(555 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Danh mục</text>
+      <text x="17" y="67" class="serif green" font-size="31">03</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Nhóm sản phẩm</text>
+    </g>
+    <g transform="translate(821 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Tổng đơn hàng</text>
+      <text x="17" y="67" class="serif green" font-size="31">128</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Đơn đã tiếp nhận</text>
+    </g>
+    <g transform="translate(1087 147)">
+      <rect width="272" height="104" rx="4" fill="#f8eee8" stroke="#eadbd2"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#8d6b5b">Chờ xử lý</text>
+      <text x="17" y="67" class="serif" font-size="31" fill="#a6694e">07</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#8d6b5b">Cần xác nhận đơn hàng</text>
+    </g>
+    <rect x="289" y="274" width="1070" height="576" rx="4" fill="#fff" stroke="#e8e7df"/>
+    <text x="313" y="313" class="serif" font-size="23">Sản phẩm</text>
+    <text x="313" y="337" class="sans" font-size="11" fill="#7d8780">Cập nhật thông tin, giá bán và số lượng tồn kho.</text>
+    <rect x="1162" y="292" width="173" height="40" rx="3" fill="#264d3b"/>
+    <text x="1185" y="317" class="sans label" fill="#fff">+  Thêm sản phẩm</text>
+    <rect x="313" y="359" width="660" height="39" rx="3" fill="#fff" stroke="#e8e7df"/>
+    <text x="329" y="384" class="sans muted" font-size="17">⌕</text>
+    <text x="355" y="384" class="sans" font-size="12" fill="#7d8780">Tìm theo tên sản phẩm...</text>
+    <rect x="988" y="359" width="347" height="39" rx="3" fill="#fff" stroke="#e8e7df"/>
+    <text x="1006" y="384" class="sans" font-size="12" fill="#5c6a60">Tất cả danh mục</text>
+    <path d="m1300 375 5 5 5-5" stroke="#7d8780" stroke-width="1.5"/>
+    <rect x="313" y="417" width="1022" height="37" fill="#f6f7f2"/>
+    <text x="329" y="441" class="sans tiny muted" font-size="9">SẢN PHẨM</text>
+    <text x="624" y="441" class="sans tiny muted" font-size="9">DANH MỤC</text>
+    <text x="786" y="441" class="sans tiny muted" font-size="9">GIÁ BÁN</text>
+    <text x="937" y="441" class="sans tiny muted" font-size="9">TỒN KHO</text>
+    <text x="1103" y="441" class="sans tiny muted" font-size="9">TRẠNG THÁI</text>
+    <text x="1250" y="441" class="sans tiny muted" font-size="9">THAO TÁC</text>
+    <g transform="translate(313 454)">
+      <path d="M0 72H1022M0 144H1022M0 216H1022M0 288H1022" class="line"/>
+      <rect x="14" y="13" width="45" height="48" rx="3" fill="#eee8de"/>
+      <rect x="24" y="23" width="25" height="28" rx="6" fill="url(#bag)"/>
+      <text x="72" y="33" class="sans label">Túi đeo chéo</text><text x="72" y="51" class="sans" font-size="10" fill="#7d8780">tui-deo-cheo</text>
+      <text x="311" y="42" class="sans body">Phụ kiện</text><text x="474" y="42" class="sans label">420.000 ₫</text>
+      <text x="632" y="42" class="sans label">19 chiếc</text>
+      <rect x="775" y="22" width="86" height="26" rx="13" fill="#eaf2e9"/><text x="793" y="40" class="sans" font-size="10" font-weight="600" fill="#426b48">Đang bán</text>
+      <text x="887" y="42" class="sans label green">Sửa</text><text x="934" y="42" class="sans label" fill="#a15849">Xóa</text>
+      <rect x="14" y="85" width="45" height="48" rx="3" fill="#e7ece9"/>
+      <path d="M22 113c8 0 10-9 17-13l12 6 8 12H26c-6 0-8-2-4-5Z" fill="url(#shoe)"/>
+      <text x="72" y="105" class="sans label">Giày sneaker</text><text x="72" y="123" class="sans" font-size="10" fill="#7d8780">giay-sneaker</text>
+      <text x="311" y="114" class="sans body">Giày dép</text><text x="474" y="114" class="sans label">850.000 ₫</text>
+      <text x="632" y="114" class="sans label">17 chiếc</text>
+      <rect x="775" y="94" width="86" height="26" rx="13" fill="#eaf2e9"/><text x="793" y="112" class="sans" font-size="10" font-weight="600" fill="#426b48">Đang bán</text>
+      <text x="887" y="114" class="sans label green">Sửa</text><text x="934" y="114" class="sans label" fill="#a15849">Xóa</text>
+      <rect x="14" y="157" width="45" height="48" rx="3" fill="#eae9e4"/>
+      <path d="m26 169 13-7 14 7 7 31H20l6-31Z" fill="#63786b"/>
+      <text x="72" y="177" class="sans label">Áo khoác denim</text><text x="72" y="195" class="sans" font-size="10" fill="#7d8780">ao-khoac-denim</text>
+      <text x="311" y="186" class="sans body">Thời trang</text><text x="474" y="186" class="sans label">690.000 ₫</text>
+      <text x="632" y="186" class="sans label">11 chiếc</text>
+      <rect x="775" y="166" width="86" height="26" rx="13" fill="#eaf2e9"/><text x="793" y="184" class="sans" font-size="10" font-weight="600" fill="#426b48">Đang bán</text>
+      <text x="887" y="186" class="sans label green">Sửa</text><text x="934" y="186" class="sans label" fill="#a15849">Xóa</text>
+      <rect x="14" y="229" width="45" height="48" rx="3" fill="#f1e8de"/>
+      <path d="m26 241 13-7 14 7 7 31H20l6-31Z" fill="#c9b7a7"/>
+      <text x="72" y="249" class="sans label">Áo thun basic</text><text x="72" y="267" class="sans" font-size="10" fill="#7d8780">ao-thun-basic</text>
+      <text x="311" y="258" class="sans body">Thời trang</text><text x="474" y="258" class="sans label">250.000 ₫</text>
+      <text x="632" y="258" class="sans label">09 chiếc</text>
+      <rect x="775" y="238" width="86" height="26" rx="13" fill="#eaf2e9"/><text x="793" y="256" class="sans" font-size="10" font-weight="600" fill="#426b48">Đang bán</text>
+      <text x="887" y="258" class="sans label green">Sửa</text><text x="934" y="258" class="sans label" fill="#a15849">Xóa</text>
+    </g>
+    <text x="313" y="824" class="sans" font-size="11" fill="#7d8780">Hiển thị 4 trên 24 sản phẩm</text>
+    <text x="1240" y="824" class="sans label green">←  1   2   3  →</text>
+  </g>
+
+  <g id="06-admin-orders" transform="translate(1480 1972)">
+    <rect width="1400" height="900" rx="8" fill="#faf9f6"/>
+    <rect width="250" height="900" fill="#f4f5f0"/>
+    <path d="M249.5 0V900" class="line"/>
+    <circle cx="42" cy="43" r="17" fill="#264d3b"/>
+    <text x="36" y="50" class="serif" font-size="22" fill="#f8f6ed">M</text>
+    <text x="70" y="40" class="sans" font-size="16" font-weight="700">Mộc Market</text>
+    <text x="70" y="56" class="sans tiny muted" font-size="8">QUẢN TRỊ</text>
+    <text x="26" y="113" class="sans tiny muted" font-size="9">MENU</text>
+    <text x="41" y="155" class="sans label muted">▦  Sản phẩm</text>
+    <text x="41" y="201" class="sans label muted">◇  Danh mục</text>
+    <rect x="17" y="220" width="216" height="43" rx="4" fill="#e8eee6"/>
+    <text x="41" y="247" class="sans label green">▤  Đơn hàng</text>
+    <rect x="24" y="825" width="202" height="49" rx="4" fill="#fff" stroke="#e8e7df"/>
+    <circle cx="49" cy="849" r="13" fill="#e9eee7"/>
+    <text x="44" y="853" class="sans" font-size="10" font-weight="700" fill="#264d3b">M</text>
+    <text x="71" y="847" class="sans label">Minh Anh</text>
+    <text x="71" y="863" class="sans" font-size="10" fill="#7d8780">Quản trị viên</text>
+
+    <text x="289" y="49" class="sans tiny" fill="#738270">MỘC MARKET · KHU VỰC QUẢN TRỊ</text>
+    <text x="289" y="91" class="serif" font-size="34">Quản lý đơn hàng</text>
+    <text x="289" y="118" class="sans body muted">Xác nhận đơn mới và cập nhật tiến độ giao hàng.</text>
+    <rect x="1171" y="47" width="188" height="40" rx="3" fill="#fff" stroke="#dfe4db"/>
+    <text x="1191" y="72" class="sans label green">↻  Làm mới dữ liệu</text>
+    <g transform="translate(289 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Tổng đơn hàng</text>
+      <text x="17" y="67" class="serif green" font-size="31">128</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Tất cả đơn đã tiếp nhận</text>
+    </g>
+    <g transform="translate(555 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Chờ xác nhận</text>
+      <text x="17" y="67" class="serif" font-size="31" fill="#a6694e">07</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Cần xử lý sớm</text>
+    </g>
+    <g transform="translate(821 147)">
+      <rect width="251" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Đang giao</text>
+      <text x="17" y="67" class="serif green" font-size="31">16</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Đơn vị vận chuyển đang giao</text>
+    </g>
+    <g transform="translate(1087 147)">
+      <rect width="272" height="104" rx="4" fill="#fff" stroke="#e8e7df"/>
+      <text x="17" y="26" class="sans" font-size="11" fill="#7d8780">Đã hoàn tất</text>
+      <text x="17" y="67" class="serif green" font-size="31">105</text>
+      <text x="17" y="88" class="sans" font-size="10" fill="#7d8780">Đã giao thành công</text>
+    </g>
+    <rect x="289" y="274" width="1070" height="576" rx="4" fill="#fff" stroke="#e8e7df"/>
+    <text x="313" y="313" class="serif" font-size="23">Đơn hàng mới nhất</text>
+    <text x="313" y="337" class="sans" font-size="11" fill="#7d8780">Theo dõi trạng thái đơn và phương thức thanh toán.</text>
+    <rect x="313" y="359" width="670" height="39" rx="3" fill="#fff" stroke="#e8e7df"/>
+    <text x="329" y="384" class="sans muted" font-size="17">⌕</text>
+    <text x="355" y="384" class="sans" font-size="12" fill="#7d8780">Tìm mã đơn hoặc khách hàng...</text>
+    <rect x="998" y="359" width="337" height="39" rx="3" fill="#fff" stroke="#e8e7df"/>
+    <text x="1017" y="384" class="sans" font-size="12" fill="#5c6a60">Tất cả trạng thái</text>
+    <path d="m1300 375 5 5 5-5" stroke="#7d8780" stroke-width="1.5"/>
+    <rect x="313" y="417" width="1022" height="37" fill="#f6f7f2"/>
+    <text x="329" y="441" class="sans tiny muted" font-size="9">MÃ ĐƠN</text>
+    <text x="435" y="441" class="sans tiny muted" font-size="9">KHÁCH HÀNG</text>
+    <text x="640" y="441" class="sans tiny muted" font-size="9">NGÀY ĐẶT</text>
+    <text x="765" y="441" class="sans tiny muted" font-size="9">TỔNG TIỀN</text>
+    <text x="914" y="441" class="sans tiny muted" font-size="9">THANH TOÁN</text>
+    <text x="1066" y="441" class="sans tiny muted" font-size="9">TRẠNG THÁI</text>
+    <text x="1229" y="441" class="sans tiny muted" font-size="9">CẬP NHẬT</text>
+    <g transform="translate(313 454)">
+      <path d="M0 82H1022M0 164H1022M0 246H1022M0 328H1022" class="line"/>
+      <text x="16" y="36" class="sans label green">#1048</text>
+      <text x="122" y="31" class="sans label">Nguyễn Minh Anh</text><text x="122" y="51" class="sans" font-size="10" fill="#7d8780">minhanh@email.com</text>
+      <text x="327" y="40" class="sans body">14/10/2026</text><text x="452" y="40" class="sans label">420.000 ₫</text>
+      <text x="601" y="40" class="sans" font-size="11">COD</text>
+      <rect x="740" y="26" width="104" height="27" rx="13" fill="#fbefe5"/><text x="752" y="44" class="sans" font-size="10" font-weight="600" fill="#a6694e">Chờ xác nhận</text>
+      <rect x="864" y="21" width="143" height="36" rx="3" fill="#fff" stroke="#dfe4db"/><text x="878" y="44" class="sans" font-size="10">Chờ xác nhận⌄</text>
+      <text x="16" y="118" class="sans label green">#1047</text>
+      <text x="122" y="113" class="sans label">Trần Quốc Bảo</text><text x="122" y="133" class="sans" font-size="10" fill="#7d8780">bao.tran@email.com</text>
+      <text x="327" y="122" class="sans body">13/10/2026</text><text x="452" y="122" class="sans label">1.270.000 ₫</text>
+      <text x="601" y="122" class="sans" font-size="11">VNPay · Đã trả</text>
+      <rect x="740" y="108" width="92" height="27" rx="13" fill="#eaf2e9"/><text x="751" y="126" class="sans" font-size="10" font-weight="600" fill="#426b48">Đã xác nhận</text>
+      <rect x="864" y="103" width="143" height="36" rx="3" fill="#fff" stroke="#dfe4db"/><text x="878" y="126" class="sans" font-size="10">Đã xác nhận⌄</text>
+      <text x="16" y="200" class="sans label green">#1046</text>
+      <text x="122" y="195" class="sans label">Lê Ngọc Hà</text><text x="122" y="215" class="sans" font-size="10" fill="#7d8780">ngoc.ha@email.com</text>
+      <text x="327" y="204" class="sans body">12/10/2026</text><text x="452" y="204" class="sans label">850.000 ₫</text>
+      <text x="601" y="204" class="sans" font-size="11">VNPay · Đã trả</text>
+      <rect x="740" y="190" width="78" height="27" rx="13" fill="#e9f0f4"/><text x="752" y="208" class="sans" font-size="10" font-weight="600" fill="#4d7185">Đang giao</text>
+      <rect x="864" y="185" width="143" height="36" rx="3" fill="#fff" stroke="#dfe4db"/><text x="878" y="208" class="sans" font-size="10">Đang giao⌄</text>
+      <text x="16" y="282" class="sans label green">#1045</text>
+      <text x="122" y="277" class="sans label">Phạm Thu Trang</text><text x="122" y="297" class="sans" font-size="10" fill="#7d8780">trang.pham@email.com</text>
+      <text x="327" y="286" class="sans body">11/10/2026</text><text x="452" y="286" class="sans label">250.000 ₫</text>
+      <text x="601" y="286" class="sans" font-size="11">COD</text>
+      <rect x="740" y="272" width="75" height="27" rx="13" fill="#eef0ed"/><text x="752" y="290" class="sans" font-size="10" font-weight="600" fill="#667368">Đã giao</text>
+      <rect x="864" y="267" width="143" height="36" rx="3" fill="#f5f5f1" stroke="#e4e5dc"/><text x="878" y="290" class="sans" font-size="10" fill="#8b938b">Hoàn tất</text>
+    </g>
+    <text x="313" y="824" class="sans" font-size="11" fill="#7d8780">Hiển thị 4 trên 128 đơn hàng</text>
+    <text x="1240" y="824" class="sans label green">←  1   2   3  →</text>
+  </g>
+</svg>
