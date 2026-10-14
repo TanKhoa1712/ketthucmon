@@ -73,6 +73,13 @@ docker compose ps
 
 Compose waits for PostgreSQL to become healthy before starting the backend, then waits for the backend health check before starting the frontend. If a service does not start, inspect its logs with `docker compose logs backend`.
 
+## Kiểm thử và CI
+
+- Backend: chạy `npm test` trong thư mục `backend` để kiểm thử các service bằng Node.js Test Runner; bộ unit test không cần PostgreSQL.
+- Frontend: chạy `npm run lint` và `npm run build` trong thư mục `frontend`.
+- GitHub Actions tự chạy backend tests, Prisma schema validation, frontend lint/production build và Docker image builds khi có push hoặc pull request vào `main`/`master`; có thể chạy thủ công từ tab **Actions**.
+- Workflow CI xác nhận chất lượng và khả năng build, chưa tự triển khai ứng dụng lên hosting.
+
 ## API
 
 - Backend: http://localhost:5000
