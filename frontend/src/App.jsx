@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
+import AdminDashboard from "./components/AdminDashboard";
 import { apiRequest } from "./services/api";
 
 const money = new Intl.NumberFormat("vi-VN", {
@@ -230,6 +231,11 @@ function App() {
     setActiveView("orders");
   }
 
+  const handleAdminFeedback = useCallback((message, isError = false) => {
+    setNotice(isError ? "" : message);
+    setError(isError ? message : "");
+  }, []);
+
   return (
     <div className="store">
       <header className="topbar">
@@ -240,9 +246,11 @@ function App() {
         <nav className="main-nav" aria-label="Điều hướng chính">
           <button className={activeView === "shop" ? "nav-link active" : "nav-link"} onClick={() => setActiveView("shop")}>Cửa hàng</button>
           <button className={activeView === "orders" ? "nav-link active" : "nav-link"} onClick={showOrders}>Đơn hàng</button>
+          {user?.role === "ADMIN" && <button className={activeView === "admin" ? "nav-link active" : "nav-link"} onClick={() => setActiveView("admin")}>Quản trị</button>}
         </nav>
         <div className="account-actions">
           <button className="text-button mobile-orders-link" onClick={showOrders}>Đơn hàng</button>
+          {user?.role === "ADMIN" && <button className="text-button mobile-admin-link" onClick={() => setActiveView("admin")}>Quản trị</button>}
           {user ? (
             <>
               <span className="welcome">Xin chào, {user.name}</span>
@@ -258,7 +266,9 @@ function App() {
       </header>
 
       <main>
-        {activeView === "shop" ? (
+        {activeView === "admin" && user?.role === "ADMIN" ? (
+          <AdminDashboard token={token} onFeedback={handleAdminFeedback} />
+        ) : activeView === "shop" ? (
           <>
             <section className="hero">
               <div className="hero-copy">

@@ -54,6 +54,14 @@ function createCategory(data) {
   return prisma.category.create({ data });
 }
 
+function updateCategory(id, data) {
+  return prisma.category.update({ where: { id }, data });
+}
+
+function deleteCategory(id) {
+  return prisma.category.delete({ where: { id } });
+}
+
 module.exports = {
   listProducts,
   countProducts,
@@ -62,5 +70,7 @@ module.exports = {
   updateProduct,
   deleteProduct,
   listCategories,
-  createCategory
+  createCategory,
+  updateCategory,
+  deleteCategory
 };

@@ -94,12 +94,47 @@ async function categories() {
 
 async function addCategory(input) {
   const name = typeof input.name === "string" ? input.name.trim() : "";
-  if (!name) {
-    const error = new Error("Tên danh mục là bắt buộc");
+  if (name.length < 2 || name.length > 80) {
+    const error = new Error("Tên danh mục phải từ 2 đến 80 ký tự");
     error.statusCode = 400;
     throw error;
   }
   return productModel.createCategory({ name, slug: makeSlug(name) });
 }
 
-module.exports = { list, getById, create, update, remove, categories, addCategory };
+async function updateCategory(id, input) {
+  const name = typeof input.name === "string" ? input.name.trim() : "";
+  if (name.length < 2 || name.length > 80) {
+    const error = new Error("Tên danh mục phải từ 2 đến 80 ký tự");
+    error.statusCode = 400;
+    throw error;
+  }
+  return productModel.updateCategory(id, { name, slug: makeSlug(name) });
+}
+
+async function removeCategory(id) {
+  const category = (await productModel.listCategories()).find((item) => item.id === id);
+  if (!category) {
+    const error = new Error("Không tìm thấy danh mục");
+    error.statusCode = 404;
+    throw error;
+  }
+  if (category._count.products > 0) {
+    const error = new Error("Không thể xóa danh mục đang có sản phẩm");
+    error.statusCode = 409;
+    throw error;
+  }
+  return productModel.deleteCategory(id);
+}
+
+module.exports = {
+  list,
+  getById,
+  create,
+  update,
+  remove,
+  categories,
+  addCategory,
+  updateCategory,
+  removeCategory
+};

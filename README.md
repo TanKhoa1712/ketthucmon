@@ -17,7 +17,7 @@ Dự án website bán hàng theo kiến trúc Frontend – Backend tách biệt,
 - Đăng ký/đăng nhập JWT; mật khẩu được hash bằng bcrypt.
 - Danh sách sản phẩm, tìm kiếm theo tên, lọc danh mục và xem tồn kho.
 - Giỏ hàng, đặt hàng COD và lịch sử đơn hàng.
-- API quản trị sản phẩm, danh mục và trạng thái đơn hàng yêu cầu role `ADMIN`.
+- Trang quản trị cho role `ADMIN`: quản lý sản phẩm, danh mục và tiến độ đơn hàng; các API quản trị đều xác thực role ở Backend.
 - Prisma đồng bộ schema và tạo dữ liệu danh mục/sản phẩm mẫu khi backend chạy trong Docker.
 
 ## Cấu trúc dự án
@@ -80,13 +80,14 @@ Compose waits for PostgreSQL to become healthy before starting the backend, then
 - Frontend: http://localhost:3000
 - API sản phẩm: `GET /api/products?search=ao&categoryId=1&page=1&limit=12`
 - API đơn hàng: `POST /api/orders`, `GET /api/orders/my-orders` (JWT)
+- Đăng nhập bằng tài khoản `ADMIN` để mở mục **Quản trị** trên giao diện.
 
 Khi phát triển frontend bên ngoài Docker (`npm run dev`), Vite chạy tại http://localhost:5173 và backend đã bật CORS cho cả hai địa chỉ frontend.
 
 Các route tạo/cập nhật sản phẩm, danh mục và cập nhật trạng thái đơn hàng yêu cầu JWT của tài khoản có role `ADMIN`. Trong môi trường đồ án local, có thể đăng ký tài khoản trước rồi nâng role bằng lệnh:
 
 ```powershell
-docker compose exec postgres psql -U webbanhang -d webbanhang -c 'UPDATE "User" SET role = ''ADMIN'' WHERE email = ''you@example.test'';'
+'UPDATE "User" SET role = ''ADMIN'' WHERE email = ''you@example.test'';' | docker compose exec -T postgres psql -U webbanhang -d webbanhang
 ```
 
 ## Lưu ý bảo mật

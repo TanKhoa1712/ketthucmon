@@ -47,4 +47,32 @@ async function addCategory(req, res) {
   return res.status(201).json({ success: true, data });
 }
 
-module.exports = { list, getById, create, update, remove, categories, addCategory };
+async function updateCategory(req, res) {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) {
+    return res.status(400).json({ success: false, message: "Mã danh mục không hợp lệ" });
+  }
+  const data = await productService.updateCategory(id, req.body || {});
+  return res.status(200).json({ success: true, data });
+}
+
+async function removeCategory(req, res) {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) {
+    return res.status(400).json({ success: false, message: "Mã danh mục không hợp lệ" });
+  }
+  await productService.removeCategory(id);
+  return res.status(200).json({ success: true, message: "Đã xóa danh mục" });
+}
+
+module.exports = {
+  list,
+  getById,
+  create,
+  update,
+  remove,
+  categories,
+  addCategory,
+  updateCategory,
+  removeCategory
+};
