@@ -7,6 +7,14 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const { PrismaClient } = require("@prisma/client");
 require("dotenv").config();
 
+if (!process.env.JWT_SECRET) {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("JWT_SECRET must be configured in production");
+  }
+  process.env.JWT_SECRET = "local-development-only-secret-change-before-production";
+  console.warn("JWT_SECRET is not configured; using an insecure development-only secret");
+}
+
 const app = express();
 const prisma = new PrismaClient();
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000,http://localhost:5173")
@@ -39,9 +47,11 @@ app.use(helmet());
 app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
-const { authRoutes, productRoutes } = require("./src/routes");
+const { authRoutes, productRoutes, categoryRoutes, orderRoutes } = require("./src/routes");
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/orders", orderRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get("/", (req, res) => {
@@ -50,7 +60,10 @@ app.get("/", (req, res) => {
     version: "1.0.0",
     endpoints: {
       health: "/api/health",
+      auth: "/api/auth",
       products: "/api/products",
+      categories: "/api/categories",
+      orders: "/api/orders",
       docs: "/api-docs"
     }
   });
@@ -65,11 +78,11 @@ app.get("/api/health", async (req, res) => {
       database: "connected"
     });
   } catch (error) {
+    console.error("Database health check failed:", error);
     res.status(500).json({
       success: false,
       message: "Backend đang hoạt động nhưng cơ sở dữ liệu chưa sẵn sàng",
-      database: "disconnected",
-      error: error.message
+      database: "disconnected"
     });
   }
 });
@@ -79,6 +92,29 @@ app.get("/api", (req, res) => {
     name: "Web Bán Hàng API",
     version: "1.0.0",
     docs: "/api-docs"
+  });
+});
+
+app.use((error, req, res, next) => {
+  if (res.headersSent) {
+    return next(error);
+  }
+  const knownPrismaStatus = {
+    P2002: 409,
+    P2003: 409,
+    P2025: 404
+  };
+  const status = error.statusCode || knownPrismaStatus[error.code] || 500;
+  if (status >= 500) {
+    console.error("Request failed:", error);
+  }
+  return res.status(status).json({
+    success: false,
+    message: status >= 500
+      ? "Đã xảy ra lỗi máy chủ"
+      : error instanceof SyntaxError && error.status === 400
+        ? "JSON request không hợp lệ"
+        : error.message
   });
 });
 

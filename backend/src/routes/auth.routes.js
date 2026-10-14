@@ -1,11 +1,13 @@
 const express = require("express");
+const authController = require("../controllers/auth.controller");
+const { requireAuth } = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 /**
  * @openapi
  * /api/auth/register:
  *   post:
- *     summary: Đăng ký tài khoản
+ *     summary: Đăng ký tài khoản khách hàng
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -15,39 +17,20 @@ const router = express.Router();
  *             type: object
  *             required: [name, email, password]
  *             properties:
- *               name:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
+ *               name: { type: string }
+ *               email: { type: string, format: email }
+ *               password: { type: string, minLength: 8 }
  *     responses:
- *       201:
- *         description: Người dùng đã tạo thành công
+ *       201: { description: Tài khoản được tạo và JWT được cấp }
+ *       409: { description: Email đã tồn tại }
  */
-router.post("/register", (req, res) => {
-  const { name, email, password } = req.body || {};
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ success: false, message: "Thông tin đăng ký không hợp lệ" });
-  }
-
-  return res.status(201).json({
-    success: true,
-    message: "Đăng ký thành công",
-    user: {
-      name,
-      email,
-      role: "customer"
-    }
-  });
-});
+router.post("/register", authController.register);
 
 /**
  * @openapi
  * /api/auth/login:
  *   post:
- *     summary: Đăng nhập
+ *     summary: Đăng nhập và nhận JWT
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -57,30 +40,25 @@ router.post("/register", (req, res) => {
  *             type: object
  *             required: [email, password]
  *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
+ *               email: { type: string, format: email }
+ *               password: { type: string }
  *     responses:
- *       200:
- *         description: Đăng nhập thành công
+ *       200: { description: Đăng nhập thành công }
+ *       401: { description: Thông tin đăng nhập không hợp lệ }
  */
-router.post("/login", (req, res) => {
-  const { email, password } = req.body || {};
+router.post("/login", authController.login);
 
-  if (!email || !password) {
-    return res.status(400).json({ success: false, message: "Email và mật khẩu là bắt buộc" });
-  }
-
-  return res.status(200).json({
-    success: true,
-    message: "Đăng nhập thành công",
-    token: "demo_jwt_token",
-    user: {
-      email,
-      role: "customer"
-    }
-  });
-});
+/**
+ * @openapi
+ * /api/auth/me:
+ *   get:
+ *     summary: Lấy hồ sơ người dùng hiện tại
+ *     tags: [Auth]
+ *     security: [{ bearerAuth: [] }]
+ *     responses:
+ *       200: { description: Hồ sơ tài khoản }
+ *       401: { description: Chưa xác thực }
+ */
+router.get("/me", requireAuth, authController.currentUser);
 
 module.exports = router;

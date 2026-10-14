@@ -12,6 +12,14 @@ Dự án website bán hàng theo kiến trúc Frontend – Backend tách biệt,
 - API docs: Swagger UI
 - Docker: Docker Compose
 
+## Chức năng
+
+- Đăng ký/đăng nhập JWT; mật khẩu được hash bằng bcrypt.
+- Danh sách sản phẩm, tìm kiếm theo tên, lọc danh mục và xem tồn kho.
+- Giỏ hàng, đặt hàng COD và lịch sử đơn hàng.
+- API quản trị sản phẩm, danh mục và trạng thái đơn hàng yêu cầu role `ADMIN`.
+- Prisma đồng bộ schema và tạo dữ liệu danh mục/sản phẩm mẫu khi backend chạy trong Docker.
+
 ## Cấu trúc dự án
 
 ```text
@@ -39,10 +47,14 @@ web-ban-hang/
 
 ```bash
 cd backend
-cp .env.example .env
+Copy-Item .env.example .env
 npm install
+npm run db:deploy
+npm run db:seed
 npm run dev
 ```
+
+`DATABASE_URL` trong file `.env` local cần trỏ đến PostgreSQL đang chạy trên máy.
 
 ### 2. Frontend
 
@@ -66,9 +78,19 @@ Compose waits for PostgreSQL to become healthy before starting the backend, then
 - Backend: http://localhost:5000
 - Swagger: http://localhost:5000/api-docs
 - Frontend: http://localhost:3000
+- API sản phẩm: `GET /api/products?search=ao&categoryId=1&page=1&limit=12`
+- API đơn hàng: `POST /api/orders`, `GET /api/orders/my-orders` (JWT)
+
+Khi phát triển frontend bên ngoài Docker (`npm run dev`), Vite chạy tại http://localhost:5173 và backend đã bật CORS cho cả hai địa chỉ frontend.
+
+Các route tạo/cập nhật sản phẩm, danh mục và cập nhật trạng thái đơn hàng yêu cầu JWT của tài khoản có role `ADMIN`. Trong môi trường đồ án local, có thể đăng ký tài khoản trước rồi nâng role bằng lệnh:
+
+```powershell
+docker compose exec postgres psql -U webbanhang -d webbanhang -c 'UPDATE "User" SET role = ''ADMIN'' WHERE email = ''you@example.test'';'
+```
 
 ## Lưu ý bảo mật
 
 - Không commit file `.env` chứa secret.
 - Giữ JWT_SECRET riêng và khác nhau giữa môi trường local và production.
-- Mật khẩu phải được hash trước khi lưu.
+- Không dùng JWT secret mặc định hoặc thông tin PostgreSQL trong Compose cho production.
