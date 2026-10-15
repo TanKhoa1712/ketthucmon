@@ -133,11 +133,11 @@ test("updateStatus rejects unsupported statuses", async () => {
     message: "Trạng thái đơn hàng không hợp lệ",
     statusCode: 400
   });
+});
 
-  test("confirmManualPayment delegates the order id to the model", async () => {
-    assert.deepEqual(await orderService.confirmManualPayment(12), {
-      id: 12,
-      paymentStatus: "PAID"
-    });
+test("confirmManualPayment delegates the order id to the model", async () => {
+  assert.deepEqual(await orderService.confirmManualPayment(12), {
+    id: 12,
+    paymentStatus: "PAID"
   });
 });
