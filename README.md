@@ -14,7 +14,6 @@ Dự án website bán hàng theo kiến trúc Frontend – Backend tách biệt,
 
 ## Chức năng
 
-- Tên cửa hàng demo: **KShop** — chữ K đại diện cho Khoa.
 - Đăng ký/đăng nhập JWT; mật khẩu được hash bằng bcrypt.
 - Danh sách sản phẩm, tìm kiếm theo tên, lọc danh mục và xem tồn kho.
 - Giỏ hàng, đặt hàng COD và lịch sử đơn hàng.
@@ -99,7 +98,5 @@ Các route tạo/cập nhật sản phẩm, danh mục và cập nhật trạng 
 ```
 
 ## Lưu ý bảo mật
-
-- Không commit file `.env` chứa secret.
 - Giữ JWT_SECRET riêng và khác nhau giữa môi trường local và production.
 - Không dùng JWT secret mặc định hoặc thông tin PostgreSQL trong Compose cho production.
