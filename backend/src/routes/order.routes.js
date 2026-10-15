@@ -7,7 +7,7 @@ const router = express.Router();
  * @openapi
  * /api/orders:
  *   post:
- *     summary: Đặt hàng COD
+ *     summary: Đặt hàng và chọn thanh toán COD hoặc chuyển khoản QR ViettelPay
  *     tags: [Orders]
  *     security: [{ bearerAuth: [] }]
  *     requestBody:
@@ -29,6 +29,7 @@ const router = express.Router();
  *               shippingName: { type: string }
  *               shippingPhone: { type: string }
  *               shippingAddress: { type: string }
+ *               paymentMethod: { type: string, enum: [COD, QR_TRANSFER], default: COD }
  *     responses:
  *       201: { description: Đơn hàng được tạo }
  *       409: { description: Không đủ tồn kho }
@@ -71,5 +72,18 @@ router.get("/my-orders", requireAuth, orderController.list);
  *       200: { description: Trạng thái được cập nhật }
  */
 router.patch("/:id/status", requireAuth, requireAdmin, orderController.updateStatus);
+
+/**
+ * @openapi
+ * /api/orders/{id}/payment/confirm:
+ *   patch:
+ *     summary: Admin xác nhận đã nhận chuyển khoản QR
+ *     tags: [Orders]
+ *     security: [{ bearerAuth: [] }]
+ *     responses:
+ *       200: { description: Thanh toán được xác nhận }
+ *       409: { description: Đơn hàng không ở trạng thái chờ thanh toán QR }
+ */
+router.patch("/:id/payment/confirm", requireAuth, requireAdmin, orderController.confirmManualPayment);
 
 module.exports = router;

@@ -17,15 +17,53 @@ const orderStatus = {
   CANCELLED: "Đã hủy",
 };
 
+const paymentStatus = {
+  NOT_REQUIRED: "Thanh toán khi nhận hàng",
+  PENDING: "Chờ thanh toán",
+  PAID: "Đã thanh toán",
+  FAILED: "Thanh toán thất bại",
+};
+
+const paymentRecipient = {
+  name: import.meta.env.VITE_PAYMENT_RECIPIENT_NAME || "",
+  account: import.meta.env.VITE_PAYMENT_RECIPIENT_ACCOUNT || "",
+};
+const paymentQrImage = import.meta.env.VITE_PAYMENT_QR_IMAGE || "";
+const manualPaymentAvailable = Boolean(
+  paymentRecipient.name && paymentRecipient.account && paymentQrImage,
+);
+
+function loadPendingPaymentCart() {
+  const savedCart = sessionStorage.getItem("pendingCheckoutCart");
+  if (!savedCart) return [];
+  try {
+    const cart = JSON.parse(savedCart);
+    if (Array.isArray(cart)) return cart;
+  } catch (error) {
+    console.error("Không thể khôi phục giỏ hàng:", error);
+  }
+  sessionStorage.removeItem("pendingCheckoutCart");
+  return [];
+}
+
 function App() {
+  const paymentParams = new URLSearchParams(window.location.search);
+  const paymentResult = paymentParams.get("payment");
+  const returnedOrderId = paymentParams.get("orderId");
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
   const [categories, setCategories] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    if (paymentResult === "success") {
+      sessionStorage.removeItem("pendingCheckoutCart");
+      return [];
+    }
+    return loadPendingPaymentCart();
+  });
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
-  const [activeView, setActiveView] = useState("shop");
+  const [activeView, setActiveView] = useState(() => paymentResult ? "orders" : "shop");
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [categoryId, setCategoryId] = useState("");
@@ -34,7 +72,10 @@ function App() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState(() => {
+    if (!paymentResult) return "";
+    return `Đã quay lại từ cổng thanh toán${returnedOrderId ? ` (đơn hàng #${returnedOrderId})` : ""}. Vui lòng kiểm tra trạng thái thanh toán trong đơn hàng.`;
+  });
 
   const cartCount = useMemo(
     () => cart.reduce((total, item) => total + item.quantity, 0),
@@ -44,6 +85,12 @@ function App() {
     () => cart.reduce((total, item) => total + Number(item.price) * item.quantity, 0),
     [cart],
   );
+
+  useEffect(() => {
+    if (!paymentResult) return;
+
+    window.history.replaceState({}, "", `${window.location.pathname}${window.location.hash}`);
+  }, [paymentResult]);
 
   useEffect(() => {
     let active = true;
@@ -185,28 +232,46 @@ function App() {
   async function submitOrder(event) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    const paymentMethod = form.get("paymentMethod");
+    if (paymentMethod === "QR_TRANSFER") {
+      try {
+        sessionStorage.setItem("pendingCheckoutCart", JSON.stringify(cart));
+      } catch (storageError) {
+        setError(`Không thể lưu giỏ hàng: ${storageError.message}`);
+        return;
+      }
+    }
     setBusy(true);
     setError("");
     try {
-      await apiRequest("/api/orders", {
+      const result = await apiRequest("/api/orders", {
         method: "POST",
         token,
         body: {
           items: cart.map(({ id, quantity }) => ({ productId: id, quantity })),
+          paymentMethod,
           shippingName: form.get("shippingName"),
           shippingPhone: form.get("shippingPhone"),
           shippingAddress: form.get("shippingAddress"),
         },
       });
+      if (result.paymentUrl) {
+        window.location.assign(result.paymentUrl);
+        return;
+      }
     } catch (requestError) {
+      sessionStorage.removeItem("pendingCheckoutCart");
       setError(requestError.message);
       setBusy(false);
       return;
     }
     setBusy(false);
+    sessionStorage.removeItem("pendingCheckoutCart");
     setCart([]);
     setCheckoutOpen(false);
-    setNotice("Đặt hàng thành công! Đơn hàng sẽ được thanh toán khi nhận hàng.");
+    setNotice(paymentMethod === "QR_TRANSFER"
+      ? "Đặt hàng thành công! Quét mã ViettelPay trong chi tiết đơn hàng để chuyển khoản."
+      : "Đặt hàng thành công! Đơn hàng sẽ được thanh toán khi nhận hàng.");
     try {
       const [history, refreshedProducts] = await Promise.all([
         apiRequest("/api/orders/my-orders", { token }),
@@ -218,6 +283,17 @@ function App() {
       setError(`Đơn hàng đã được ghi nhận nhưng không thể tải lại dữ liệu: ${refreshError.message}`);
     }
     setActiveView("orders");
+  }
+
+  async function copyPaymentDetail(value, label) {
+    try {
+      await navigator.clipboard.writeText(value);
+      setError("");
+      setNotice(`${label} đã được sao chép.`);
+    } catch {
+      setNotice("");
+      setError(`Không thể sao chép ${label.toLowerCase()}. Vui lòng sao chép thủ công.`);
+    }
   }
 
   function showOrders() {
@@ -352,12 +428,18 @@ function App() {
               {checkoutOpen && (
                 <form className="checkout-panel" onSubmit={submitOrder}>
                   <button type="button" className="close-button" onClick={() => setCheckoutOpen(false)} aria-label="Đóng">×</button>
-                  <p className="eyebrow">GIAO HÀNG COD</p>
+                  <p className="eyebrow">THANH TOÁN AN TOÀN</p>
                   <h2>Thông tin nhận hàng</h2>
                   <label>Họ và tên<input name="shippingName" defaultValue={user?.name || ""} required minLength="2" maxLength="80" /></label>
                   <label>Số điện thoại<input name="shippingPhone" type="tel" required minLength="8" maxLength="20" /></label>
                   <label>Địa chỉ nhận hàng<textarea name="shippingAddress" required minLength="8" rows="3" /></label>
-                  <button className="primary-button checkout-button" disabled={busy}>{busy ? "Đang xử lý..." : "Xác nhận đặt hàng"}</button>
+                  <fieldset className="payment-methods">
+                    <legend>Phương thức thanh toán</legend>
+                    <label><input type="radio" name="paymentMethod" value="COD" defaultChecked /> Thanh toán khi nhận hàng (COD)</label>
+                    <label><input type="radio" name="paymentMethod" value="QR_TRANSFER" disabled={!manualPaymentAvailable} /> Chuyển khoản ViettelPay bằng QR</label>
+                    {!manualPaymentAvailable && <p className="payment-method-unavailable">Cửa hàng chưa cấu hình đầy đủ tài khoản nhận tiền và mã QR.</p>}
+                  </fieldset>
+                  <button className="primary-button checkout-button" disabled={busy}>{busy ? "Đang xử lý..." : "Tiếp tục thanh toán"}</button>
                 </form>
               )}
             </section>
@@ -369,7 +451,68 @@ function App() {
               <article className="order-card" key={order.id}>
                 <div className="order-heading"><div><span className="order-number">ĐƠN HÀNG #{order.id}</span><span className="order-date">{new Date(order.createdAt).toLocaleDateString("vi-VN")}</span></div><span className={`status-pill status-${order.status.toLowerCase()}`}>{orderStatus[order.status] || order.status}</span></div>
                 <div className="order-products">{order.items.map((item) => <div className="order-product" key={item.id}><span>{item.product.name} × {item.quantity}</span><strong>{money.format(Number(item.price) * item.quantity)}</strong></div>)}</div>
-                <div className="order-total"><span>Thanh toán khi nhận hàng</span><strong>{money.format(Number(order.total))}</strong></div>
+                <div className="order-total"><span>{order.paymentMethod === "QR_TRANSFER" && order.paymentStatus === "PENDING" ? "Chờ chuyển khoản ViettelPay" : paymentStatus[order.paymentStatus] || order.paymentMethod}</span><strong>{money.format(Number(order.total))}</strong></div>
+                {order.paymentMethod === "QR_TRANSFER" && order.paymentStatus === "PENDING" && (
+                  <div className="payment-qr">
+                    <div className="payment-qr-heading">
+                      <div>
+                        <span className="payment-qr-overline">THANH TOÁN CHUYỂN KHOẢN</span>
+                        <h3>ViettelPay · VietQR</h3>
+                      </div>
+                      <span className="payment-qr-badge">KSHOP</span>
+                    </div>
+                    <div className="payment-qr-layout">
+                      <div className="payment-qr-code">
+                        <div className="payment-qr-frame">
+                          {paymentQrImage
+                            ? <img src={paymentQrImage} alt="Mã VietQR nhận tiền cho KShop" />
+                            : <p className="payment-qr-unavailable">Cửa hàng chưa cấu hình mã QR thanh toán.</p>}
+                        </div>
+                        <span>Mở ứng dụng ngân hàng hoặc ViettelPay để quét mã</span>
+                      </div>
+                      <div className="payment-qr-details">
+                        <div className="payment-amount">
+                          <span>SỐ TIỀN THANH TOÁN</span>
+                          <strong>{money.format(Number(order.total))}</strong>
+                          <button
+                            className="payment-copy-button"
+                            onClick={() => copyPaymentDetail(
+                              String(Math.round(Number(order.total))),
+                              "Số tiền",
+                            )}
+                          >
+                            Sao chép số tiền
+                          </button>
+                        </div>
+                        <div className="payment-detail-row">
+                          <span>Người nhận</span>
+                          <strong>{paymentRecipient.name || "Chưa cấu hình"}</strong>
+                        </div>
+                        <div className="payment-detail-row">
+                          <span>Tài khoản ViettelPay</span>
+                          <strong>{paymentRecipient.account || "Chưa cấu hình"}</strong>
+                        </div>
+                        <div className="payment-detail-row payment-reference">
+                          <span>Nội dung chuyển khoản</span>
+                          <strong>{order.paymentRef || `KSHOP-${order.id}`}</strong>
+                          <button
+                            className="payment-copy-button"
+                            onClick={() => copyPaymentDetail(
+                              order.paymentRef || `KSHOP-${order.id}`,
+                              "Nội dung chuyển khoản",
+                            )}
+                          >
+                            Sao chép nội dung
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="payment-qr-note">
+                      <span aria-hidden="true">!</span>
+                      <p>Vui lòng chuyển đúng số tiền và nội dung để shop đối soát đơn hàng. Đơn hàng sẽ được xác nhận sau khi shop kiểm tra giao dịch.</p>
+                    </div>
+                  </div>
+                )}
               </article>
             ))}</div> : <div className="empty-state"><span>♡</span><h3>Bạn chưa có đơn hàng</h3><p>Các đơn đã đặt sẽ xuất hiện tại đây.</p><button className="primary-button" onClick={() => setActiveView("shop")}>Khám phá sản phẩm</button></div>}
           </section>

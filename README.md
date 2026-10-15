@@ -16,7 +16,8 @@ Dự án website bán hàng theo kiến trúc Frontend – Backend tách biệt,
 
 - Đăng ký/đăng nhập JWT; mật khẩu được hash bằng bcrypt.
 - Danh sách sản phẩm, tìm kiếm theo tên, lọc danh mục và xem tồn kho.
-- Giỏ hàng, đặt hàng COD và lịch sử đơn hàng.
+- Giỏ hàng, đặt hàng COD hoặc chuyển khoản ViettelPay bằng QR và lịch sử đơn hàng.
+- Email xác nhận khi tạo đơn và thông báo qua SMTP.
 - Trang quản trị cho role `ADMIN`: quản lý sản phẩm, danh mục và tiến độ đơn hàng; các API quản trị đều xác thực role ở Backend.
 - Prisma đồng bộ schema và tạo dữ liệu danh mục/sản phẩm mẫu khi backend chạy trong Docker.
 
@@ -36,6 +37,7 @@ web-ban-hang/
 │   ├── Dockerfile
 │   ├── nginx.conf
 │   └── package.json
+├── .env.example
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
@@ -54,7 +56,8 @@ npm run db:seed
 npm run dev
 ```
 
-`DATABASE_URL` trong file `.env` local cần trỏ đến PostgreSQL đang chạy trên máy.
+`DATABASE_URL` trong file `.env` local cần trỏ đến PostgreSQL đang chạy trên máy. Cấu hình `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` và `MAIL_FROM` để bật email (Gmail cần App Password); để trống thì chức năng mua hàng vẫn hoạt động, còn email sẽ bị tắt và được ghi log.
+Chuyển khoản QR dùng thông tin cấu hình `VITE_PAYMENT_RECIPIENT_NAME`, `VITE_PAYMENT_RECIPIENT_ACCOUNT` và `VITE_PAYMENT_QR_IMAGE`. Sao chép QR ViettelPay riêng vào `frontend/public/viettelpay-qr.jpg` (file này bị Git bỏ qua vì chứa thông tin tài khoản cá nhân). Với Docker, đặt ba biến trong `.env` ở thư mục gốc trước khi build; khi chạy Vite trực tiếp, đặt chúng trong `frontend/.env`. Không đưa QR hoặc số tài khoản thật vào Git. Vì mã QR tĩnh không chứa sẵn số tiền hay mã đơn hàng, khách cần nhập đúng tổng tiền và nội dung `KSHOP-<mã đơn>`; quản trị viên xác nhận đã nhận tiền trước khi xử lý đơn. Không cần cấu hình tài khoản VNPay.
 
 ### 2. Frontend
 
@@ -71,7 +74,7 @@ docker compose up --build -d
 docker compose ps
 ```
 
-Compose waits for PostgreSQL to become healthy before starting the backend, then waits for the backend health check before starting the frontend. If a service does not start, inspect its logs with `docker compose logs backend`.
+Compose waits for PostgreSQL to become healthy before starting the backend, then waits for the backend health check before starting the frontend. Từ thư mục gốc, sao chép `.env.example` thành `.env` và điền cấu hình SMTP nếu cần gửi email. Thanh toán QR không cần tài khoản VNPay; nếu SMTP chưa được cấu hình, luồng đặt hàng vẫn tiếp tục và backend ghi log email bị tắt. If a service does not start, inspect its logs with `docker compose logs backend`.
 
 ## Kiểm thử và CI
 
@@ -87,6 +90,7 @@ Compose waits for PostgreSQL to become healthy before starting the backend, then
 - Frontend: http://localhost:3000
 - API sản phẩm: `GET /api/products?search=ao&categoryId=1&page=1&limit=12`
 - API đơn hàng: `POST /api/orders`, `GET /api/orders/my-orders` (JWT)
+- Admin xác nhận đã nhận chuyển khoản: `PATCH /api/orders/{id}/payment/confirm` (JWT role `ADMIN`).
 - Đăng nhập bằng tài khoản `ADMIN` để mở mục **Quản trị** trên giao diện.
 
 Khi phát triển frontend bên ngoài Docker (`npm run dev`), Vite chạy tại http://localhost:5173 và backend đã bật CORS cho cả hai địa chỉ frontend.

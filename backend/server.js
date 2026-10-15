@@ -47,11 +47,12 @@ app.use(helmet());
 app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
-const { authRoutes, productRoutes, categoryRoutes, orderRoutes } = require("./src/routes");
+const { authRoutes, productRoutes, categoryRoutes, orderRoutes, paymentRoutes } = require("./src/routes");
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/payments", paymentRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get("/", (req, res) => {
@@ -64,6 +65,7 @@ app.get("/", (req, res) => {
       products: "/api/products",
       categories: "/api/categories",
       orders: "/api/orders",
+      payments: "/api/payments",
       docs: "/api-docs"
     }
   });
@@ -110,7 +112,7 @@ app.use((error, req, res, next) => {
   }
   return res.status(status).json({
     success: false,
-    message: status >= 500
+    message: status >= 500 && error.expose !== true
       ? "Đã xảy ra lỗi máy chủ"
       : error instanceof SyntaxError && error.status === 400
         ? "JSON request không hợp lệ"

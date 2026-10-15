@@ -15,6 +15,13 @@ const statuses = {
   CANCELLED: { label: "Đã hủy", next: [] },
 };
 
+const paymentStatuses = {
+  NOT_REQUIRED: "COD",
+  PENDING: "Chờ thanh toán",
+  PAID: "Đã thanh toán",
+  FAILED: "Thanh toán thất bại",
+};
+
 function fetchAdminData(token) {
   return Promise.all([
     apiRequest("/api/products?limit=100"),
@@ -158,6 +165,22 @@ function AdminDashboard({ token, onFeedback }) {
     }
   }
 
+  async function confirmManualPayment(order) {
+    setBusy(true);
+    try {
+      await apiRequest(`/api/orders/${order.id}/payment/confirm`, {
+        method: "PATCH",
+        token,
+      });
+      onFeedback(`Đã xác nhận nhận tiền cho đơn hàng #${order.id}.`);
+      await refreshData();
+    } catch (error) {
+      onFeedback(error.message, true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   const pendingOrders = orders.filter((order) => order.status === "PENDING").length;
 
   return (
@@ -253,7 +276,7 @@ function AdminDashboard({ token, onFeedback }) {
 
         {section === "orders" && (
           <div className="admin-content">
-            <div className="admin-section-heading"><div><h2>Đơn hàng</h2><p>Xem đơn đặt COD và cập nhật tiến độ giao hàng.</p></div><span className="admin-order-count">{orders.length} đơn hàng</span></div>
+            <div className="admin-section-heading"><div><h2>Đơn hàng</h2><p>Xem đơn hàng và cập nhật tiến độ giao hàng.</p></div><span className="admin-order-count">{orders.length} đơn hàng</span></div>
             {loading ? <p className="admin-loading">Đang tải đơn hàng...</p> : orders.length ? (
               <div className="admin-orders-list">{orders.map((order) => (
                 <article className="admin-order-card" key={order.id}>
@@ -265,8 +288,15 @@ function AdminDashboard({ token, onFeedback }) {
                     <div className="admin-customer"><span>NGƯỜI NHẬN</span><strong>{order.shippingName}</strong><small>{order.shippingPhone}</small><small>{order.shippingAddress}</small><small>Đặt bởi: {order.user.name} · {order.user.email}</small></div>
                     <div className="admin-order-items"><span>SẢN PHẨM</span>{order.items.map((item) => <p key={item.id}>{item.product.name} <small>× {item.quantity}</small><strong>{money.format(Number(item.price) * item.quantity)}</strong></p>)}</div>
                   </div>
-                  <div className="admin-order-bottom"><div><span>Thanh toán COD</span><strong>{money.format(Number(order.total))}</strong></div>
-                    {statuses[order.status]?.next.length ? (
+                  <div className="admin-order-bottom"><div><span>{paymentStatuses[order.paymentStatus] || order.paymentMethod}</span><strong>{money.format(Number(order.total))}</strong></div>
+                    {order.paymentMethod === "QR_TRANSFER" && order.paymentStatus === "PENDING" ? (
+                      <div className="manual-payment-actions">
+                        <button className="primary-button" disabled={busy} onClick={() => confirmManualPayment(order)}>Xác nhận đã nhận tiền</button>
+                        <button className="danger-action" disabled={busy} onClick={() => updateStatus(order, "CANCELLED")}>Hủy đơn</button>
+                      </div>
+                    ) : order.paymentMethod === "VNPAY" && order.paymentStatus === "PENDING" ? (
+                      <span className="status-final">Chờ kết quả thanh toán</span>
+                    ) : statuses[order.status]?.next.length ? (
                       <label className="status-control">Cập nhật trạng thái<select value="" disabled={busy} onChange={(event) => updateStatus(order, event.target.value)}><option value="" disabled>Chọn trạng thái</option>{statuses[order.status].next.map((status) => <option value={status} key={status}>{statuses[status].label}</option>)}</select></label>
                     ) : <span className="status-final">Đơn hàng đã hoàn tất</span>}
                   </div>

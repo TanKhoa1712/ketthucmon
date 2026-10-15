@@ -2,6 +2,12 @@ const orderModel = require("../models/order.model");
 
 function validateOrder(input, userId) {
   const { items, shippingName, shippingPhone, shippingAddress } = input;
+  const paymentMethod = input.paymentMethod || "COD";
+  if (!["COD", "QR_TRANSFER"].includes(paymentMethod)) {
+    const error = new Error("Phương thức thanh toán không hợp lệ");
+    error.statusCode = 400;
+    throw error;
+  }
   if (!Array.isArray(items) || items.length === 0 || items.length > 50) {
     const error = new Error("Giỏ hàng phải có từ 1 đến 50 sản phẩm");
     error.statusCode = 400;
@@ -49,12 +55,16 @@ function validateOrder(input, userId) {
     items: [...quantities].map(([productId, quantity]) => ({ productId, quantity })),
     shippingName: normalizedName,
     shippingPhone: normalizedPhone,
-    shippingAddress: normalizedAddress
+    shippingAddress: normalizedAddress,
+    paymentMethod
   };
 }
 
-function create(input, userId) {
-  return orderModel.createOrder(validateOrder(input, userId));
+async function create(input, userId) {
+  const orderData = validateOrder(input, userId);
+  const order = await orderModel.createOrder(orderData);
+  await require("./email.service").sendOrderConfirmation(order, null);
+  return { order, paymentUrl: null };
 }
 
 function list(user) {
@@ -74,4 +84,12 @@ async function updateStatus(id, status) {
   return orderModel.updateOrderStatus(id, status);
 }
 
-module.exports = { create, list, updateStatus };
+function processVnpayCallback(params) {
+  return require("./vnpay.service").processCallback(params);
+}
+
+function confirmManualPayment(id) {
+  return orderModel.confirmManualPayment(id);
+}
+
+module.exports = { create, list, updateStatus, processVnpayCallback, confirmManualPayment };

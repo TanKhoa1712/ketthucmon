@@ -5,3 +5,4 @@ node_modules/
 npm-debug.log*
 frontend/dist/
 backend/.env
+frontend/public/viettelpay-qr.jpg
